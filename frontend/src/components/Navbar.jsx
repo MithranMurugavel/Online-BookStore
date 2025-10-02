@@ -19,7 +19,7 @@ export const Navbar = () => {
 
    const [isDropdownOpen,setIsDropdownOpen]= useState(false)
    console.log(isDropdownOpen)
-
+  const handleLogOut=true;
   const currentuser = true;
   return (
     <header className="max-w-screen-2xl mx-auto px-6 py-6">
@@ -46,9 +46,29 @@ export const Navbar = () => {
           <div>
             {
               currentuser ? <>
-                <button onClick>
+                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                   <img src ={avatar} alt="Boken Image" className={`size-7 rounded-full ${currentuser ? 'ring-2 ring-blue-500' : ''}`}/>
-                </button></>:<LiaUserGraduateSolid className="size-6" to="/login"/>
+                </button>
+                 {/*show dropdown*/}
+
+                 {
+                    isDropdownOpen && (
+                      <div className="absolute right-0 mt-1 w-48 bg-white shadow-lg rounded-md z-40">
+                        <ul className="py-2">
+                          {
+                            navigation.map((item) =>(
+                              <li key={item.name} onClick={() => setIsDropdownOpen(false)}>
+                                <Link to={item.href} className="block px-4 py-2 text-sm hover:bg-gray-100">
+                                {item.name}
+                                </Link>
+                              </li>
+                            ))
+                          }
+                        </ul>
+                      </div>
+                    )
+                 }
+                </>:<LiaUserGraduateSolid className="size-6" to="/login"/>
             }
           </div>
           <button>
