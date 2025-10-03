@@ -15,7 +15,7 @@
 }
 
 .swiper-slide {
-  @apply bg-white flex justify-center items-center;
+  @apply bg-white flex justify-centre items-center;
 }
 
 .swiper-slide img {
