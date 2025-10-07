@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef,useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -52,6 +52,7 @@ const news = [
 
 const News = () => {
   const swiperRef = useRef(null);
+  const [activeSwiper, setActiveSwiper] = useState(null);
   
     const handleKeyDown = (e) => {
     const swiper = swiperRef.current;
@@ -60,7 +61,8 @@ const News = () => {
     if (e.key === 'ArrowLeft') swiper.slidePrev();
   }; 
   return (
-    <div className="py-16"  onMouseEnter={() => document.addEventListener('keydown', handleKeyDown)}
+    <div className="py-16"  
+      onMouseEnter={() => document.addEventListener('keydown', handleKeyDown)}
       onMouseLeave={() => document.removeEventListener('keydown', handleKeyDown)}>
       <h2 className="text-3xl font-semibold mb-6">News</h2>
 
@@ -69,7 +71,7 @@ const News = () => {
         slidesPerView={1}
         spaceBetween={30}
         navigation={true}
-        keyboard={{ enabled: true }} 
+        keyboard={{ enabled: activeSwiper === swiperRef.current }} 
         breakpoints={{
           640: {
             slidesPerView: 1,

@@ -20,7 +20,9 @@ export const Navbar = () => {
    const [isDropdownOpen,setIsDropdownOpen]= useState(false)
    console.log(isDropdownOpen)
   const handleLogOut=true;
-  const currentuser = true;
+  const currentuser = false;
+
+  const token = localStorage.getItem('token');
   return (
     <header className="max-w-screen-2xl mx-auto px-6 py-6">
       <nav className="flex justify-between items-center">
@@ -68,7 +70,8 @@ export const Navbar = () => {
                       </div>
                     )
                  }
-                </>:<LiaUserGraduateSolid className="size-6" to="/login"/>
+                </>:token ? <Link to="/dashboard" className='border-b-2 border-primary'>Dashboard</Link> : (
+                                <Link to="/login"> <LiaUserGraduateSolid className="size-6" to="/login"/></Link>)
             }
           </div>
           <button>
