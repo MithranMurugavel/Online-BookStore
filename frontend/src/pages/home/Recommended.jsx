@@ -42,7 +42,6 @@ export const Recommended = () => {
         slidesPerView={1}
         spaceBetween={15}
         navigation={true}
-        pagination={{ clickable: true }}
         breakpoints={{
           480: { slidesPerView: 1, spaceBetween: 15 },
           640: { slidesPerView: 1.5, spaceBetween: 20 },

@@ -64,7 +64,6 @@ export const Topselling = () => {
         slidesPerView={1}
         spaceBetween={30}
         navigation={true}
-        pagination={{ clickable: true }}
         breakpoints={{
           640: {
             slidesPerView: 1,
