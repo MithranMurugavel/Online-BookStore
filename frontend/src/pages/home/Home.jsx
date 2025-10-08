@@ -13,7 +13,7 @@ export const Home = () => {
      <Recommended/>
      <News/>
      <Footer/>
-     <Login/>
+    
     </>
    
    
