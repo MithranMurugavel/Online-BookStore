@@ -25,13 +25,13 @@ const Login = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='mb-4'>
-            <label className="flex text-gray-500 text-md font-bold mb-2" htmlfor="email">Email:</label>
+            <label className="flex text-gray-500 text-md font-bold mb-2" htmlFor="email">Email:</label>
             <input 
             {...register("email", { required: true })}
             type='email' name='email' id='email' placeholder='abc123@gmail.com' className=' shadow border w-full rounded py-2 px-3 leading-tight focus:outline-none focus:shadow'/>
           </div>
           <div className='mb-4'>
-            <label className="block text-gray-500 text-md font-bold mb-2" htmlfor="email">Password:</label>
+            <label className="block text-gray-500 text-md font-bold mb-2" htmlFor="email">Password:</label>
             <input {...register("password", { required: true })}
             type='password' name='password' id='password' placeholder='Enter Password' className=' shadow border w-full rounded py-2 px-3 leading-tight focus:outline-none focus:shadow'/>
           </div>

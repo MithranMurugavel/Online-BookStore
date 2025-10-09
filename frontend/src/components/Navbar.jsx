@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
@@ -23,6 +24,9 @@ export const Navbar = () => {
   const currentuser = false;
 
   const token = localStorage.getItem('token');
+
+  const cartItems = useSelector(state => state.cart.cartItems);
+  console.log(cartItems)
   return (
     <header className="max-w-screen-2xl mx-auto px-6 py-6">
       <nav className="flex justify-between items-center">
@@ -82,7 +86,10 @@ export const Navbar = () => {
             className="bg-primary p-1 sm:px-6 py-2 flex items-center rounded-lg"
           >
             <MdOutlineShoppingCart className="size-6" />
-            <span className="text-sm font-semibold sm:ml-1">Empty cart</span>
+            {
+                cartItems.length > 0 ? <span calssName='text-sm font-semibold sm-ml-1'>{cartItems.length}</span> :  <span className="text-sm font-semibold sm:ml-1">Empty cart</span>
+            }
+           
           </Link>
         </div>
       </nav>

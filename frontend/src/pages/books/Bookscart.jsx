@@ -2,8 +2,15 @@ import React from 'react'
 import { FiShoppingCart } from "react-icons/fi";
 import { getimg } from '../../utils/getimg';
 import {Link} from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import { addToCart } from '../../redux/features/cartSlice';
 
 const Bookscart = ({book}) => {
+  const dispatch = useDispatch();
+
+  const addToCart1 = (Book) =>{
+    dispatch(addToCart(Book))
+  }
   return (
     <div className=" rounded-lg transition-shadow duration-300">
   <div
@@ -30,7 +37,9 @@ const Bookscart = ({book}) => {
       <p className="font-medium mb-5">
         <span className="text-3xl">${book?.newPrice}</span> <span className="line-through font-normal ml-2 text-red-500">${book?.oldPrice}</span>
       </p>
-      <button className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
+      <button 
+      onClick={() => addToCart1(book)}
+      className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
         <FiShoppingCart className="" />
         <span>Add to Cart</span>
       </button>
