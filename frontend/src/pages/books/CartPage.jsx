@@ -27,7 +27,7 @@ const CartPage = () => {
           onClick={handleClearCart}
             type="button"
             className="relative -m-2 py-1 px-2 bg-red-500 text-white rounded-md hover:bg-secondary transition-all duration-200  ">
-            <span className="p-2 font-bold" >Clear Cart</span>
+            <span className="p-2 font-bold cursor-pointer" >Clear Cart</span>
           </button>
         </div>
       </div>
@@ -64,7 +64,7 @@ const CartPage = () => {
                       <div className="flex">
                         <button  
                         onClick={() => handleRemoveFromCart(product)}
-                        type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                        type="button" className="font-medium text-indigo-600 hover:text-indigo-500 cursor-pointer">
                           Remove
                         </button>
                       </div>
@@ -88,7 +88,7 @@ const CartPage = () => {
       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
       <div className="mt-6">
         <Link
-          to="/checkout"
+          to="/checkoutpage"
           className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
         >
           Checkout

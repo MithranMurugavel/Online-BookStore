@@ -34,6 +34,10 @@ import CartPage from "../pages/books/CartPage";
                 {
                     path:"/cart",
                     element:<CartPage/>
+                },
+                {
+                    path:"/checkout",
+                    element:<Checkoutpage/>
                 }
             ]
         },
