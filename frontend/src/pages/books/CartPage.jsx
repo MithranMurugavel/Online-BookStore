@@ -6,10 +6,11 @@ import {removeFromCart, clearCart} from '../../redux/features/cartSlice';
 
 const CartPage = () => {
   const cartItems = useSelector(state => state.cart.cartItems);
+  const totalprice = cartItems.reduce((acc,item) => acc + item.newPrice, 0).toFixed(2);
   const dispatch = useDispatch();
 
-  const totalprice = cartItems.reduce((acc,item) => acc + item.newPrice, 0).toFixed(2);
 
+  
   const handleRemoveFromCart =(product) =>{
     dispatch(removeFromCart(product))
   }
