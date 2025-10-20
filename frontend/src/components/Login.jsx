@@ -33,7 +33,7 @@ const Login = () => {
           <div className='mb-4'>
             <label className="block text-gray-500 text-md font-bold mb-2" htmlFor="email">Password:</label>
             <input {...register("password", { required: true })}
-            type='password' name='password' id='password' placeholder='Enter Password' className=' shadow border w-full rounded py-2 px-3 leading-tight focus:outline-none focus:shadow'/>
+            type='password' name='password' id='password' placeholder='Enter Password' className=' shadow border w-full rounded py-2 px-3 leading-tight focus:outline-none focus:shadow mt-1'/>
           </div>
           {
               message && <p className='text-red-500 text-xs italic mb-3'>{message}</p>
