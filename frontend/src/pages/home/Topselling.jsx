@@ -9,24 +9,18 @@ import 'swiper/css/navigation';
 
 // Import required modules
 import { Pagination, Navigation,Keyboard } from 'swiper/modules';
+import { useFetchAllBooksQuery } from '../../redux/features/bookApi';
 
 const categories = ['choose a genre', 'business', 'fiction', 'horror', 'adventure'];
 
 export const Topselling = () => {
-  const [books, setBooks] = useState([]);
   const [selectedcategory, setselectedcategory] = useState('choose a genre');
     const swiperRef = useRef(null);
 
-  useEffect(() => {
-    fetch('books.json')
-      .then((res) => res.json())
-      .then((data) => setBooks(data));
-  }, []);
+  const {data: books=[]} = useFetchAllBooksQuery();
+  console.log(books);
 
-  const filterBooks =
-    selectedcategory === 'choose a genre'
-      ? books
-      : books.filter((book) => book.category === selectedcategory.toLowerCase());
+  
 
    const handleKeyDown = (e) => {
     const swiper = swiperRef.current;
@@ -35,6 +29,12 @@ export const Topselling = () => {
     if (e.key === 'ArrowRight') swiper.slideNext();
     if (e.key === 'ArrowLeft') swiper.slidePrev();
   };
+const filterBooks =
+  selectedcategory === 'choose a genre'
+    ? books.books || []
+    : (books.books || []).filter(
+        book => book.category === selectedcategory.toLowerCase()
+      );
 
   return (
     <div className="py-10" onMouseEnter={() => {
@@ -89,15 +89,17 @@ export const Topselling = () => {
         modules={[Pagination, Navigation,Keyboard]}
         className="mySwiper"
       >
-        {filterBooks.length > 0 &&
+        {
+        filterBooks.length > 0 &&
           filterBooks.map((book, index) => (
             <SwiperSlide key={index} >
               <Bookscart book={book} />
             </SwiperSlide>
-          ))}
+          ))
+        }
       </Swiper>
     </div>
-  );
-};
+  )
+}
 
 export default Topselling;

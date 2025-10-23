@@ -9,16 +9,14 @@ import 'swiper/css/navigation';
 
 // Import required modules
 import { Pagination, Navigation, Keyboard } from 'swiper/modules';
+import { useFetchAllBooksQuery } from '../../redux/features/bookApi';
 
 export const Recommended = () => {
-  const [books, setBooks] = useState([]);
   const swiperRef = useRef(null);
-
-  useEffect(() => {
-    fetch('books.json')
-      .then((res) => res.json())
-      .then((data) => setBooks(data));
-  }, []);
+ const { data, isLoading } = useFetchAllBooksQuery();
+ if (isLoading) return <p>Loading...</p>;
+const books = data?.books || [];
+  
 
   const handleKeyDown = (e) => {
     const swiper = swiperRef.current;
