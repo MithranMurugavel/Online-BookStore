@@ -3,8 +3,6 @@ import Banner from './Banner'
 import { Topselling } from './Topselling'
 import { Recommended} from './Recommended'
 import News from './News'
-import Footer from '../../components/footer'
-import Login from '../../components/Login'
 export const Home = () => {
   return (
     <>
@@ -12,7 +10,6 @@ export const Home = () => {
      <Topselling/>
      <Recommended/>
      <News/>
-     <Footer/>
     
     </>
    
