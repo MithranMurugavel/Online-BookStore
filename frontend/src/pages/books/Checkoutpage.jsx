@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Checkoutpage = () => {
     const cartItems = useSelector(state => state.cart.cartItems);
       const totalPrice = cartItems.reduce((acc,item) => acc + item.newPrice, 0).toFixed(2);
-      const {  currentUser} = true; //To-Do get a user auth 
+      const   currentUser  = true; //To-Do get a user auth 
       const [isChecked, setIsChecked] = useState(false)
       const {
         register,
@@ -33,7 +33,9 @@ const Checkoutpage = () => {
             totalPrice: totalPrice,
          } 
          console.log(neworder);
+          alert("Order placed");
     }
+
   return (
     <section>
       <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
@@ -57,17 +59,17 @@ const Checkoutpage = () => {
                                 <div className="md:col-span-5">
                                     <label htmlFor="full_name">Full Name</label>
                                     <input
-                                       
+                                       {...register("name", { required: true })}
                                         type="text" name="name" id="name" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50"  />
                                 </div>
 
                                 <div className="md:col-span-5">
                                     <label html="email">Email Address</label>
                                     <input
-                                        
+                                        {...register("email")}
                                         type="text" name="email" id="email" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" 
                                         
-                                        defaultValue={currentUser?.email}
+                                        defaultValue={currentUser?.email} readOnly
                                         placeholder="email@domain.com" />
                                 </div>
                                 <div className="md:col-span-5">
@@ -80,14 +82,14 @@ const Checkoutpage = () => {
                                 <div className="md:col-span-3">
                                     <label htmlFor="address">Address / Street</label>
                                     <input
-                                      
+                                      {...register("address", { required: true })}
                                         type="text" name="address" id="address" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
                                 </div>
 
                                 <div className="md:col-span-2">
                                     <label htmlFor="city">City</label>
                                     <input
-                                       
+                                       {...register("city", { required: true })}
                                         type="text" name="city" id="city" className="h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
                                 </div>
 
@@ -95,7 +97,7 @@ const Checkoutpage = () => {
                                     <label htmlFor="country">Country / region</label>
                                     <div className="h-10 bg-gray-50 flex border border-gray-200 rounded items-center mt-1">
                                         <input
-                                           
+                                           {...register("country", { required: true })}
                                             name="country" id="country" placeholder="Country" className="px-4 appearance-none outline-none text-gray-800 w-full bg-transparent"  />
                                         <button tabIndex="-1" className="cursor-pointer outline-none focus:outline-none transition-all text-gray-300 hover:text-red-600">
                                             <svg className="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -136,7 +138,7 @@ const Checkoutpage = () => {
 
                                 <div className="md:col-span-5 mt-3">
                                     <div className="inline-flex items-center">
-                                        <input 
+                                        <input   onChange={(e) => setIsChecked(e.target.checked)}
                                         type="checkbox" name="billing_same" id="billing_same" className="form-checkbox" />
                                         <label htmlFor="billing_same" className="ml-2 ">I am aggree to the <Link className='underline underline-offset-2 text-blue-600'>Terms & Conditions</Link> and <Link className='underline underline-offset-2 text-blue-600'>Shoping Policy.</Link></label>
                                     </div>
@@ -147,8 +149,10 @@ const Checkoutpage = () => {
                                 <div className="md:col-span-5 text-right">
                                     <div className="inline-flex items-end">
                                         <button 
-                                        disabled={!isChecked}
-                                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">Place an Order</button>
+                                        disabled={!isChecked} 
+                                        className={`${
+                        isChecked ? "bg-blue-500 hover:bg-blue-700" : "bg-gray-400"
+                      } text-white font-bold py-2 px-4 rounded`}>Place an Order</button>
                                     </div>
                                 </div>
 
