@@ -9,6 +9,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 {/*import Avatar images*/}
 import avatar from "../assets/avatar.png"
+import { useAuth } from "../context/AuthContext";
 
 const navigation = [
     {name: "Dashboard", href:"/user-dashboard"},
@@ -19,9 +20,11 @@ const navigation = [
 export const Navbar = () => {
 
    const [isDropdownOpen,setIsDropdownOpen]= useState(false)
-   console.log(isDropdownOpen)
-  const handleLogOut=true;
-  const currentuser = false;
+  
+  const {currentUser,logout} =useAuth();
+  const handleLogOut = () => {
+    logout()
+  }
 
   const token = localStorage.getItem('token');
 
@@ -51,9 +54,9 @@ export const Navbar = () => {
         <div className="relative flex items-center md:space-x-3 space-x-2">
           <div>
             {
-              currentuser ? <>
-                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                  <img src ={avatar} alt="Boken Image" className={`size-7 rounded-full ${currentuser ? 'ring-2 ring-blue-500' : ''}`}/>
+              currentUser ? <>
+                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="cursor-pointer">
+                  <img src ={avatar} alt="Boken Image" className={`size-7 rounded-full ${currentUser ? 'ring-2 ring-blue-500' : ''}`}/>
                 </button>
                  {/*show dropdown*/}
 
@@ -70,6 +73,9 @@ export const Navbar = () => {
                               </li>
                             ))
                           }
+                          <li>
+                            <button onClick={handleLogOut} className="block px-4 py-2 text-sm hover:bg-gray-100 w-full">Logout</button>
+                          </li>
                         </ul>
                       </div>
                     )

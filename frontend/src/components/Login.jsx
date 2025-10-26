@@ -6,7 +6,7 @@ import { useAuth } from '../context/AuthContext';
 
 
 const Login = () => {
-  const [message,setMessaege] = useState("");
+  const [message,setMessage] = useState("");
   const {loginUser,signInWithGoogle} =useAuth();
   const navigate = useNavigate();
 
@@ -24,15 +24,18 @@ const Login = () => {
           navigate("/")
         }
         catch(error){
-          setMessaege("Please Register your credentials")
+          setMessage("Please Register your credentials")
         }
     }
     
     const handleGoogleSignIn = async() => {
         try {
           await signInWithGoogle()
+          alert("Login Successful")
+          navigate('/')
         } catch (error) {
-          
+          alert("Google sign in failed");
+          console.log(error)
         }
       }
     return (
@@ -61,7 +64,7 @@ const Login = () => {
         </form>
         <p className='align-baseline font-medium mt-4 text-sm'>Haven't an account <Link to='/Register' className='text-blue-500 hover:text-blue-700' title="Register here">Click here</Link></p>
         <div className='mt-3'>
-          <button onClick={handleGoogleSignIn()}
+          <button onClick={handleGoogleSignIn}
           className='w-full flex flext-wrap gap-1 items-center justify-center bg-primary hover:bg-blue-700 rounded-[9px] text-black font-bold py-2 px-4 focus:outline-none'><FcGoogle className='mr-2 w-8 h-8'/>Sign in With Google</button>
         </div>
       </div>
