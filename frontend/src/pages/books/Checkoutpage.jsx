@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form"
 import Swal from'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { useCreateOrderMutation } from '../../redux/features/orderApi';
 
 
 const Checkoutpage = () => {
@@ -18,7 +19,8 @@ const Checkoutpage = () => {
         formState: { errors },
     } = useForm()
 
-    const onSubmit=(data) =>{
+    const [createOrder,{isLoading,error}] = useCreateOrderMutation()
+    const onSubmit= async(data) =>{
          console.log(data);
          const neworder ={
             name: data.name,
@@ -33,10 +35,18 @@ const Checkoutpage = () => {
             productIds:cartItems.map(item => item?._id),
             totalPrice: totalPrice,
          } 
-         console.log(neworder);
+        
+         try {
+            await createOrder(newOrder).unwrap();
+
+             console.log(neworder);
           alert("Order placed");
+         } catch (error) {
+            console.error("Error occurring")
+         }
     }
 
+    if(isLoading) return <div>Loading...</div>
   return (
     <section>
       <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
