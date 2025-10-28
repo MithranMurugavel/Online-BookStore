@@ -10,5 +10,5 @@ export const store = configureStore({
 
   },
   middleware:(getDefaultMiddleware) => 
-     getDefaultMiddleware().concat(booksApi.middleware,orderApi,middleware),
+     getDefaultMiddleware().concat(booksApi.middleware,orderApi.middleware),
 })

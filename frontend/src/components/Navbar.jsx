@@ -93,7 +93,7 @@ export const Navbar = () => {
           >
             <MdOutlineShoppingCart className="size-6" />
             {
-                cartItems.length > 0 ? <span calssName='text-sm font-semibold sm-ml-1'>{cartItems.length}</span> :  <span className="text-sm font-semibold sm:ml-1">Empty cart</span>
+                cartItems.length > 0 ? <span className='text-sm font-semibold sm-ml-1'>{cartItems.length}</span> :  <span className="text-sm font-semibold sm:ml-1">Empty cart</span>
             }
            
           </Link>

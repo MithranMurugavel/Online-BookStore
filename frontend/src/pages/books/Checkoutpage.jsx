@@ -20,12 +20,13 @@ const Checkoutpage = () => {
     } = useForm()
 
     const [createOrder,{isLoading,error}] = useCreateOrderMutation()
+    const navigate = useNavigate()
     const onSubmit= async(data) =>{
          console.log(data);
          const neworder ={
             name: data.name,
             email:currentUser?.email,
-            adderss:{
+            address:{
                 city:data.city,
                 country:data.country,
                 state:data.state,
@@ -37,10 +38,17 @@ const Checkoutpage = () => {
          } 
         
          try {
-            await createOrder(newOrder).unwrap();
-
+            await createOrder(neworder).unwrap();
+             Swal.fire({
+                title: "Confirmed Order",
+                text: "Your order placed successfully!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, It's Okay!"
+              });
              console.log(neworder);
-          alert("Order placed");
          } catch (error) {
             console.error("Error occurring")
          }

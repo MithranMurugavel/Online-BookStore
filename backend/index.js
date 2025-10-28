@@ -11,10 +11,10 @@ app.use(express.json());
 app.use(cors({
   
     origin: ['http://localhost:5173'],
-    credentials:true
-}))
-const bookRoutes = require('./src/books/books.route.js')
-const orderRouter = require("./src/orders/order.route")
+    credentials:true,
+}));
+const bookRoutes = require('./src/books/books.route')
+const orderRouter = require('./src/orders/order.route')
 app.use("/api/books",bookRoutes)
 app.use("/api/orders",orderRouter)
 async function main() {
