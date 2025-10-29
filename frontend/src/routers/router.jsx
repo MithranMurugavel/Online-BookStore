@@ -7,6 +7,7 @@ import CartPage from "../pages/books/CartPage";
 import Checkoutpage from "../pages/books/checkoutpage";
 import SingleBook from "../pages/books/SingleBook";
 import Privaterouter from "./Privaterouter";
+import ThankYouPage from "../pages/books/ThankYouPage";
 
  const router=createBrowserRouter(
     [
@@ -45,6 +46,10 @@ import Privaterouter from "./Privaterouter";
                 {
                     path:"/books/:id",
                     element:<SingleBook/>
+                },
+                {
+                    path:"/thankyou",
+                    element:<ThankYouPage/>
                 }
             ]
         },

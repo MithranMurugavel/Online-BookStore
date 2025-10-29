@@ -38,17 +38,17 @@ const Checkoutpage = () => {
          } 
         
          try {
-            await createOrder(neworder).unwrap();
-             Swal.fire({
-                title: "Confirmed Order",
-                text: "Your order placed successfully!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, It's Okay!"
-              });
-             console.log(neworder);
+          await createOrder(neworder).unwrap();
+Swal.fire({
+  title: "Confirmed Order",
+  text: "Your order placed successfully!",
+  icon: "success",
+  confirmButtonColor: "#3085d6",
+  confirmButtonText: "OK",
+}).then(() => {
+  navigate('/thankyou', { state: { orderId: neworder._id } });
+});
+
          } catch (error) {
             console.error("Error occurring")
          }
