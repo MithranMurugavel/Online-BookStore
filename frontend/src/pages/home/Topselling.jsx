@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation,Keyboard } from 'swiper/modules';
 import { useFetchAllBooksQuery } from '../../redux/features/bookApi';
 
-const categories = ['choose a genre', 'business', 'fiction', 'horror', 'adventure'];
+const categories = ['choose a genre', 'Business', 'Fiction', 'Horror', 'Adventure'];
 
 export const Topselling = () => {
   const [selectedcategory, setselectedcategory] = useState('choose a genre');

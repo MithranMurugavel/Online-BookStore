@@ -39,7 +39,7 @@ const Bookscart = ({book}) => {
       </p>
       <button 
       onClick={() => addToCart1(book)}
-      className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
+      className="btn-primary px-4 space-x-1 flex items-center gap-1 ">
         <FiShoppingCart className="" />
         <span>Add to Cart</span>
       </button>

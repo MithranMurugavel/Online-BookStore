@@ -62,19 +62,19 @@ export const Navbar = () => {
 
                  {
                     isDropdownOpen && (
-                      <div className="absolute right-0 mt-1 w-48 bg-white shadow-lg rounded-md z-40">
-                        <ul className="py-2">
+                      <div className="absolute right-8 w-48 bg-white shadow-lg rounded-md z-40">
+                        <ul className="border">
                           {
                             navigation.map((item) =>(
                               <li key={item.name} onClick={() => setIsDropdownOpen(false)}>
-                                <Link to={item.href} className="block px-4 py-2 text-sm hover:bg-gray-100">
+                                <Link to={item.href} className="block  py-2 text-sm hover:bg-gray-100 px-14 border my-1">
                                 {item.name}
                                 </Link>
                               </li>
                             ))
                           }
                           <li>
-                            <button onClick={handleLogOut} className="block px-4 py-2 text-sm hover:bg-gray-100 w-full">Logout</button>
+                            <button onClick={handleLogOut} className="block px-4 py-2 text-sm hover:bg-gray-100 w-full border">Logout</button>
                           </li>
                         </ul>
                       </div>
@@ -84,9 +84,9 @@ export const Navbar = () => {
                                 <Link to="/login"> <LiaUserGraduateSolid className="size-6" to="/login"/></Link>)
             }
           </div>
-          <button>
-            <BsBalloonHeart className="size-9" />
-          </button>
+          <button className="p-2 rounded-full hover:bg-gray-100">
+            <BsBalloonHeart className="size-6" />
+          </button >
           <Link
             to="/cart"
             className="bg-primary p-1 sm:px-6 py-2 flex items-center rounded-lg"
