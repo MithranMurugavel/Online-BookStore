@@ -4,8 +4,8 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 const JWT_SECRET = process.env.JWT_SECRET_KEY
-router.post("/admin",async (req,res) =>{
-    const {usernaem,password} = req.body;
+router.post("/admin", async (req,res) =>{
+    const {username,password} = req.body;
 
     try {
         
@@ -14,11 +14,19 @@ router.post("/admin",async (req,res) =>{
             res.status(404).send({message:"Admin not found"})
         }
 
-        if(username.password !== admin.password){
+        if(admin.password !== password){
             res.status(401).send({message:"Invalid passwlrd"});
         }
 
-        const token = jwt.sign({id:admin._id,username:admin.username,role:admin.role},JWT_SECRET,{expiresIn:"1h"})
+        const token = jwt.sign({id:admin._id,username:admin.username,role:admin.role},JWT_SECRET,{expiresIn:"1h"});
+        return res.status(200).json({
+            message:"Authentication Successful",
+            token:token,
+            user:{
+                username:admin.username,
+                role:admin.role
+            },
+        })
     } catch (error) {
         console.error("failed to login");
         res.status(401).send('failed')
