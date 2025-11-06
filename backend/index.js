@@ -20,7 +20,7 @@ const adminRouter = require('./src/stats/admin.stats')
 app.use("/api/books",bookRoutes)
 app.use("/api/orders",orderRouter)
 app.use("/api/auth", userRouter)
-app.use("/api/admin",userRouter)
+app.use("/api/admin",adminRouter)
 async function main() {
     await mongoose.connect(process.env.DB_URL);
     app.use("/",(req, res) => {
