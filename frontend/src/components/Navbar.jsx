@@ -3,16 +3,17 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AiOutlineBars } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
-import { LiaUserGraduateSolid } from "react-icons/lia";
 import { BsBalloonHeart } from "react-icons/bs";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa6";
 
 {/*import Avatar images*/}
 import avatar from "../assets/avatar.png"
 import { useAuth } from "../context/AuthContext";
 
 const navigation = [
-    {name: "Dashboard", href:"/user-dashboard"},
+    {name: "Dashboard", href:"/dashboard"},
     {name: "Orders", href:"/orders"},
     {name: "Cart Page", href:"/cart"},
     {name: "Check Out", href:"/checkout"},
@@ -81,11 +82,11 @@ export const Navbar = () => {
                     )
                  }
                 </>:token ? <Link to="/dashboard" className='border-b-2 border-primary'>Dashboard</Link> : (
-                                <Link to="/login"> <LiaUserGraduateSolid className="size-6" to="/login"/></Link>)
+                                <Link to="/login"><FaRegCircleUser className="size-6" to="/login"/></Link>)
             }
           </div>
           <button className="p-2 rounded-full hover:bg-gray-100">
-            <BsBalloonHeart className="size-6" />
+            <FaRegHeart className="size-6" />
           </button >
           <Link
             to="/cart"
@@ -93,7 +94,7 @@ export const Navbar = () => {
           >
             <MdOutlineShoppingCart className="size-6" />
             {
-                cartItems.length > 0 ? <span className='text-sm font-semibold sm-ml-1'>{cartItems.length}</span> :  <span className="text-sm font-semibold sm:ml-1">Empty cart</span>
+                cartItems.length > 0 ? <span className='text-sm font-semibold sm-ml-1'>{cartItems.length}</span> :  <span className="text-sm font-semibold sm:ml-1">0</span>
             }
            
           </Link>

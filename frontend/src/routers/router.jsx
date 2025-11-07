@@ -47,7 +47,7 @@ import UpdateBook from "../pages/dashboard/EditBooks/UpdateBook";
                     element:<CartPage/>
                 },
                 {
-                    path:"/checkoutpage",
+                    path:"/checkout",
                     element:<Privaterouter><Checkoutpage/></Privaterouter>
                 },
                 {
