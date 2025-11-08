@@ -6,11 +6,13 @@ import 'ldrs/react/Bouncy.css'
 
 const Loading = () => {
   return (
+    <div className ="flex justify-center items-center h-screen">
     <Bouncy
   size="45"
-  speed="1.75"
+  speed="2"
   color="black" 
 />
+</div>
   )
 }
 

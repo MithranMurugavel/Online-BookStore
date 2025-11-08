@@ -5,6 +5,7 @@ import Swal from'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useCreateOrderMutation } from '../../redux/features/orderApi';
+import Loading from '../../components/Loading';
 
 
 const Checkoutpage = () => {
@@ -54,7 +55,7 @@ const Checkoutpage = () => {
          }
     }
 
-    if(isLoading) return <div>Loading...</div>
+    if(isLoading) return <Loading/>
   return (
     <section>
       <div className="min-h-screen p-6 bg-gray-100 flex items-center justify-center">

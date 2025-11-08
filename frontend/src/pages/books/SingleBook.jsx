@@ -5,6 +5,7 @@ import { getimg } from '../../utils/getimg';
 import { FiShoppingCart } from "react-icons/fi"
 import { useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom"
+import Loading from '../../components/Loading';
 
 const SingleBook = () => {
   const {id} = useParams();
@@ -16,7 +17,7 @@ const SingleBook = () => {
         dispatch(addToCart(product))
     }
 
-    if(isLoading) return <div>Loading...</div>
+    if(isLoading) return <Loading/>
     if(isError) return <div>Error happending to load book info</div>
   return (
     <div className="max-w-lg shadow-md p-5">

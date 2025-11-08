@@ -16,7 +16,6 @@ const categories = ['choose a genre', 'Business', 'Fiction', 'Horror', 'Adventur
 export const Topselling = () => {
   const [selectedcategory, setselectedcategory] = useState('choose a genre');
     const swiperRef = useRef(null);
-
   const {data: books=[]} = useFetchAllBooksQuery();
   console.log(books);
 

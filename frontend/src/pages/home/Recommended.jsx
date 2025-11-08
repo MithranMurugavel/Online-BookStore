@@ -27,7 +27,7 @@ const books = data?.books || [];
 
   return (
     <section
-      className="py-10 sm:py-12 md:py-16 px-4 sm:px-8 lg:px-16"
+      className="py-10"
       onMouseEnter={() => document.addEventListener('keydown', handleKeyDown)}
       onMouseLeave={() => document.removeEventListener('keydown', handleKeyDown)}
     >

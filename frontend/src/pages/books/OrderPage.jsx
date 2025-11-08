@@ -1,6 +1,7 @@
 import React from 'react'
 import { useGetOrderByEmailQuery } from '../../redux/features/orderApi'
 import { useAuth } from '../../context/AuthContext'
+import Loading from '../../components/Loading'
 
 const OrderPage = () => {
     const {currentUser} = useAuth()
@@ -14,7 +15,7 @@ const OrderPage = () => {
         </h2>
     )
     } 
-    if(isLoading) return <div>Loading...</div>
+    if(isLoading) return <Loading/>
     
     
   return (
